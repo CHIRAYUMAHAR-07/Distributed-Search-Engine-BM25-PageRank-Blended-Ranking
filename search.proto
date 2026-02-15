@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service SearchService {
+  rpc Search(QueryRequest) returns (QueryResponse);
+}
+
+message QueryRequest {
+  string query = 1;
+  int32 top_k = 2;
+}
+
+message Result {
+  uint32 doc_id = 1;
+  double score = 2;
+}
+
+message QueryResponse {
+  repeated Result results = 1;
+}
